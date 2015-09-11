@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +101,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=app1',
+    '--all-modules',
+    '--xunit-file=reports/junit.xml',
+    '--cover-xml',
+    '--cover-xml-file=reports/coverage.xml'
+]
